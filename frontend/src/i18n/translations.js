@@ -147,9 +147,9 @@ export const translations = {
       },
       info: {
         title: 'معلومات التواصل',
-        address: 'المملكة العربية السعودية',
+        address: 'الجمهورية  اليمنية',
         email: 'info@siliconcove.com',
-        phone: '+966 50 000 0000',
+        phone: '+967 775 886 025',
         hours: 'الأحد - الخميس: 9:00 - 18:00',
       },
     },
@@ -313,9 +313,9 @@ export const translations = {
       },
       info: {
         title: 'Contact Information',
-        address: 'Kingdom of Saudi Arabia',
+        address: 'Republice of Yemen',
         email: 'info@siliconcove.com',
-        phone: '+966 50 000 0000',
+        phone: '+967 775 886 025',
         hours: 'Sun - Thu: 9:00 AM - 6:00 PM',
       },
     },
