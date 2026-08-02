@@ -6,69 +6,67 @@ Professional bilingual (Arabic/English) corporate website for **SiliconCove**, a
 
 | Layer | Technology |
 |-------|-----------|
-| Backend | PHP / Laravel 12 |
-| Frontend | React + Vite + React Router DOM |
+| Framework | Next.js 16 (App Router) |
+| Language | TypeScript |
 | Styling | Tailwind CSS v4 |
 | Animations | Framer Motion + AOS |
 | Icons | Lucide React |
+| Fonts | next/font (IBM Plex Sans Arabic + Inter) |
+| Backend | Next.js API Routes (replaces the old Laravel API) |
 
 ## Project Structure
 
 ```
-SiliconeCove_full_site/
-├── backend/          # Laravel API
-│   ├── app/Http/Controllers/Api/
-│   └── routes/api.php
-└── frontend/         # React SPA
-    └── src/
-        ├── components/
-        │   ├── layout/     # Navbar, Footer, LoadingScreen
-        │   ├── home/       # Hero, AboutPreview, ServicesPreview, etc.
-        │   ├── services/   # ServiceCard
-        │   ├── about/      # MissionVision
-        │   ├── contact/    # ContactForm, ContactInfo
-        │   └── common/     # Button, SectionTitle, GlowCard
-        ├── context/        # LanguageContext (AR default, RTL)
-        ├── i18n/           # translations.js
-        └── pages/          # Home, About, Services, Contact
+SiliconCove-Project/
+└── src/
+    ├── app/
+    │   ├── api/contact/route.ts  # Contact form API
+    │   ├── about/page.tsx
+    │   ├── services/page.tsx
+    │   ├── contact/page.tsx
+    │   ├── layout.tsx            # Root layout (fonts, metadata, RTL)
+    │   ├── page.tsx              # Home
+    │   └── globals.css
+    ├── components/
+    │   ├── layout/     # AppShell, Navbar, Footer, LoadingScreen
+    │   ├── home/       # Hero, AboutPreview, ServicesPreview, etc.
+    │   ├── services/   # ServiceCard
+    │   ├── about/      # MissionVision
+    │   ├── contact/    # ContactForm, ContactInfo
+    │   └── common/     # Button, SectionTitle, GlowCard
+    ├── context/        # LanguageContext (AR default, RTL)
+    ├── i18n/           # translations.ts, serviceIcons.ts
+    └── types/          # AOS attribute types
 ```
 
 ## Prerequisites
 
-- **PHP** >= 8.2 (with extensions: mbstring, openssl, pdo, tokenizer, xml, ctype, json)
-- **Composer** >= 2.x
-- **Node.js** >= 18
-- **npm** >= 9
+- **Node.js** >= 20.9
+- **npm** >= 10
 
 ## Setup Commands
 
-### 1. Backend (Laravel)
-
 ```bash
-cd backend
-composer install
-copy .env.example .env        # Windows
-# cp .env.example .env        # macOS/Linux
-php artisan key:generate
-php artisan serve             # http://localhost:8000
-```
-
-### 2. Frontend (React + Vite)
-
-```bash
-cd frontend
 npm install
-npm run dev                   # http://localhost:5173
+npm run dev          # http://localhost:3000
 ```
 
-The Vite dev server proxies `/api/*` requests to `http://localhost:8000`.
-
-### 3. Production Build
+### Production
 
 ```bash
-cd frontend
-npm run build                 # Output: frontend/dist/
+npm run build
+npm run start        # http://localhost:3000
 ```
+
+## Scripts
+
+| Command | Description |
+|---------|-------------|
+| `npm run dev` | Start the development server |
+| `npm run build` | Create an optimized production build |
+| `npm run start` | Serve the production build |
+| `npm run lint` | Run ESLint |
+| `npm run typecheck` | Run TypeScript type checking |
 
 ## Key Features
 
@@ -95,19 +93,10 @@ npm run build                 # Output: frontend/dist/
 }
 ```
 
-## Development Workflow
-
-Run both servers in separate terminals:
-
-```bash
-# Terminal 1 — Backend
-cd backend && php artisan serve
-
-# Terminal 2 — Frontend
-cd frontend && npm run dev
-```
-
-Open [http://localhost:5173](http://localhost:5173) in your browser.
+**Responses:**
+- `201` — Message received successfully
+- `422` — Validation errors (`{ success: false, errors: { field: message } }`)
+- `400` — Invalid JSON body
 
 ## License
 
