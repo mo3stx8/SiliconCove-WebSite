@@ -90,6 +90,7 @@ export interface Translation {
       sending: string
       success: string
       error: string
+      comingSoon: string
     }
     info: {
       title: string
@@ -257,6 +258,7 @@ export const translations: Record<Language, Translation> = {
         sending: 'جاري الإرسال...',
         success: 'تم إرسال رسالتك بنجاح! سنتواصل معك قريباً.',
         error: 'حدث خطأ. يرجى المحاولة مرة أخرى.',
+        comingSoon: 'نموذج التواصل سيُفعَّل قريباً.',
       },
       info: {
         title: 'معلومات التواصل',
@@ -423,6 +425,7 @@ export const translations: Record<Language, Translation> = {
         sending: 'Sending...',
         success: 'Your message was sent successfully! We will contact you soon.',
         error: 'An error occurred. Please try again.',
+        comingSoon: 'The contact form will be activated soon.',
       },
       info: {
         title: 'Contact Information',

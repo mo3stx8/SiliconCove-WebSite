@@ -17,10 +17,12 @@ interface ContactFormData {
 const initialForm: ContactFormData = { name: '', email: '', phone: '', subject: '', message: '' }
 const fields = ['name', 'email', 'phone', 'subject'] as const
 
+const contactEndpoint = process.env.NEXT_PUBLIC_CONTACT_ENDPOINT ?? ''
+
 export default function ContactForm() {
   const { t } = useLanguage()
   const [form, setForm] = useState<ContactFormData>(initialForm)
-  const [status, setStatus] = useState<'success' | 'error' | null>(null)
+  const [status, setStatus] = useState<'success' | 'error' | 'soon' | null>(null)
   const [loading, setLoading] = useState(false)
 
   const handleChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
@@ -32,8 +34,14 @@ export default function ContactForm() {
     setLoading(true)
     setStatus(null)
 
+    if (!contactEndpoint) {
+      setStatus('soon')
+      setLoading(false)
+      return
+    }
+
     try {
-      const res = await fetch('/api/contact', {
+      const res = await fetch(contactEndpoint, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
         body: JSON.stringify(form),
@@ -94,11 +102,17 @@ export default function ContactForm() {
             className={`flex items-center gap-2 text-sm px-4 py-3 rounded-xl ${
               status === 'success'
                 ? 'bg-green-500/10 text-green-400 border border-green-500/20'
-                : 'bg-red-500/10 text-red-400 border border-red-500/20'
+                : status === 'soon'
+                  ? 'bg-cove-500/10 text-cove-300 border border-cove-500/20'
+                  : 'bg-red-500/10 text-red-400 border border-red-500/20'
             }`}
           >
             {status === 'success' ? <CheckCircle size={18} /> : <AlertCircle size={18} />}
-            {status === 'success' ? t.contactPage.form.success : t.contactPage.form.error}
+            {status === 'success'
+              ? t.contactPage.form.success
+              : status === 'soon'
+                ? t.contactPage.form.comingSoon
+                : t.contactPage.form.error}
           </div>
         )}
 

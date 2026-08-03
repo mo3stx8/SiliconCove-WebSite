@@ -18,7 +18,7 @@
 | Animations | [Framer Motion](https://www.framer.com/motion/) + [AOS](https://michalsnik.github.io/aos/) |
 | Icons | [Lucide React](https://lucide.dev) |
 | Fonts | `next/font` — IBM Plex Sans Arabic + Inter |
-| Backend | Next.js API Routes (replaces the former Laravel API) |
+| Deployment | Static export (`output: 'export'`) on [GitHub Pages](https://pages.github.com) via GitHub Actions |
 | Code Quality | ESLint (`eslint-config-next`) + TypeScript strict |
 
 ## Getting Started
@@ -31,8 +31,8 @@
 ### Installation
 
 ```bash
-git clone https://github.com/lagdaSec/SiliconCove-Project.git
-cd SiliconCove-Project
+git clone https://github.com/mo3stx8/SiliconCove-Website.git
+cd SiliconCove-Website
 npm install
 ```
 
@@ -44,21 +44,14 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser.
 
-### Production
-
-```bash
-npm run build
-npm run start
-```
-
 ## Project Structure
 
 ```
-SiliconCove-Project/
+SiliconCove-Website/
+├── .github/workflows/    # GitHub Pages deployment
 ├── public/                  # Static assets (favicon, icons)
 └── src/
     ├── app/                 # App Router
-    │   ├── api/contact/route.ts  # Contact form API (POST /api/contact)
     │   ├── page.tsx              # Home
     │   ├── about/page.tsx        # About
     │   ├── services/page.tsx     # Services
@@ -83,10 +76,46 @@ SiliconCove-Project/
 | Command | Description |
 |---------|-------------|
 | `npm run dev` | Start the development server on `http://localhost:3000` |
-| `npm run build` | Create an optimized production build |
-| `npm run start` | Serve the production build |
+| `npm run build` | Create a static export in `out/` |
 | `npm run lint` | Run ESLint |
 | `npm run typecheck` | Run TypeScript type checking |
+
+## Deployment — GitHub Pages
+
+The project is configured for static export and deploys to GitHub Pages automatically on every push to `main`.
+
+### How it works
+
+- `next.config.ts` uses `output: 'export'` and reads the Pages base path from the `PAGES_BASE_PATH` environment variable, so links and assets are correctly prefixed for `https://<user>.github.io/<repo>/`.
+- `.github/workflows/deploy.yml` builds the site and deploys the `out/` directory using the official `actions/deploy-pages` workflow.
+
+### Manual deployment
+
+```bash
+npm run build
+npx serve out     # preview the static build locally
+```
+
+### First-time setup (once)
+
+1. Push the repo to GitHub.
+2. Go to **Settings → Pages**.
+3. Under **Build and deployment**, set **Source** to **GitHub Actions** (no branch needed — the workflow deploys).
+4. The site will be available at `https://<user>.github.io/SiliconCove-Website/` after the first successful run.
+
+## Contact Form
+
+The contact form is currently **inactive** and will be activated later.
+
+- It reads the endpoint from the `NEXT_PUBLIC_CONTACT_ENDPOINT` environment variable.
+- Until that variable is set, submitting the form shows a "coming soon" notice and sends nothing.
+- To activate, point it at any service that accepts a `POST` request with a JSON body (e.g. EmailJS, Formspree) and rebuild.
+
+**Example:**
+
+```bash
+NEXT_PUBLIC_CONTACT_ENDPOINT=https://formspree.io/f/your-id npm run build
+```
 
 ## Key Features
 
@@ -95,33 +124,7 @@ SiliconCove-Project/
 - **Smooth scrolling** and scroll-triggered AOS animations
 - **Framer Motion** micro-interactions on buttons, cards, and the loading screen
 - **Loading screen** with branded progress animation
-- **Contact form** wired to a built-in API route
-
-## API Endpoints
-
-| Method | Endpoint | Description |
-|--------|----------|-------------|
-| POST | `/api/contact` | Submit the contact form |
-
-**Request body:**
-
-```json
-{
-  "name": "string (required)",
-  "email": "string (required)",
-  "phone": "string (optional)",
-  "subject": "string (required)",
-  "message": "string (required)"
-}
-```
-
-**Responses:**
-
-| Status | Body | Meaning |
-|--------|------|---------|
-| `201` | `{ "success": true, "message": "Message received successfully." }` | Message accepted |
-| `422` | `{ "success": false, "errors": { "field": "message" } }` | Validation failed |
-| `400` | `{ "success": false, "message": "Invalid JSON body." }` | Malformed request |
+- **Contact form** — ready for activation via `NEXT_PUBLIC_CONTACT_ENDPOINT`
 
 ## License
 
