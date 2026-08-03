@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from 'react'
 import Link from 'next/link'
+import Image from 'next/image'
+import logo from '../../assets/logo.png'
 import { usePathname } from 'next/navigation'
 import { AnimatePresence, motion } from 'framer-motion'
 import { Menu, X } from 'lucide-react'
@@ -12,6 +14,7 @@ import Button from '@/components/common/Button'
 const navLinks = [
   { key: 'home', path: '/' },
   { key: 'about', path: '/about' },
+  { key: 'products', path: '/products' },
   { key: 'services', path: '/services' },
   { key: 'contact', path: '/contact' },
 ] as const satisfies readonly { key: keyof Translation['nav']; path: string }[]
@@ -37,9 +40,14 @@ export default function Navbar() {
       <nav className="container mx-auto px-4 md:px-6 lg:px-8">
         <div className="flex items-center justify-between h-16 md:h-20">
           <Link href="/" className="flex items-center gap-3 group">
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-cove-400 to-blue-500 flex items-center justify-center shadow-lg shadow-cove-500/20 group-hover:shadow-cove-500/40 transition-shadow">
-              <span className="text-sm font-bold text-white">SC</span>
-            </div>
+            <Image
+              src={logo}
+              alt="SiliconCove"
+              width={224}
+              height={266}
+              className="h-9 w-auto md:h-10"
+              priority
+            />
             <span className="text-lg md:text-xl font-bold text-white group-hover:text-cove-300 transition-colors">
               SiliconCove
             </span>

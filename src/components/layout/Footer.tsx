@@ -1,6 +1,8 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
+import logo from '../../assets/logo.png'
 import { Mail, MapPin, Phone } from 'lucide-react'
 import { useLanguage } from '@/context/LanguageContext'
 
@@ -14,9 +16,13 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
           <div className="lg:col-span-1">
             <Link href="/" className="flex items-center gap-3 mb-4">
-              <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-cove-400 to-blue-500 flex items-center justify-center">
-                <span className="text-sm font-bold text-white">SC</span>
-              </div>
+              <Image
+                src={logo}
+                alt="SiliconCove"
+                width={224}
+                height={266}
+                className="h-12 w-auto md:h-14"
+              />
               <span className="text-xl font-bold text-white">SiliconCove</span>
             </Link>
             <p className="text-slate-400 text-sm leading-relaxed">{t.footer.description}</p>
@@ -25,7 +31,7 @@ export default function Footer() {
           <div>
             <h4 className="text-white font-semibold mb-4">{t.footer.quickLinks}</h4>
             <ul className="space-y-2">
-              {(['home', 'about', 'services', 'contact'] as const).map((key) => (
+              {(['home', 'about', 'products', 'services', 'contact'] as const).map((key) => (
                 <li key={key}>
                   <Link
                     href={key === 'home' ? '/' : `/${key}`}

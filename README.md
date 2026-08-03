@@ -55,6 +55,7 @@ SiliconCove-Website/
     │   ├── page.tsx              # Home
     │   ├── about/page.tsx        # About
     │   ├── services/page.tsx     # Services
+    │   ├── products/page.tsx     # Products
     │   ├── contact/page.tsx      # Contact
     │   ├── layout.tsx            # Root layout (fonts, metadata, RTL)
     │   ├── icon.svg              # Favicon
@@ -63,6 +64,7 @@ SiliconCove-Website/
     │   ├── layout/               # AppShell, Navbar, Footer, LoadingScreen
     │   ├── home/                 # Hero, AboutPreview, ServicesPreview, etc.
     │   ├── services/             # ServiceCard
+    │   ├── products/             # ProductCard
     │   ├── about/                # MissionVision
     │   ├── contact/              # ContactForm, ContactInfo
     │   └── common/               # Button, SectionTitle, GlowCard

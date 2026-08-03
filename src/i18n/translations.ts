@@ -15,10 +15,23 @@ export interface Service {
   description: string
 }
 
+export type ProductKey = 'mpms' | 'yard'
+
+export interface Product {
+  title: string
+  subtitle: string
+  description: string
+  features: string[]
+  tech: string[]
+  status: string
+  link?: string
+}
+
 export interface Translation {
   nav: {
     home: string
     about: string
+    products: string
     services: string
     contact: string
     langToggle: string
@@ -77,6 +90,14 @@ export interface Translation {
     heroTitle: string
     heroSubtitle: string
   }
+  productsPage: {
+    heroTitle: string
+    heroSubtitle: string
+    features: string
+    techStack: string
+    viewProject: string
+    products: Record<ProductKey, Product>
+  }
   contactPage: {
     heroTitle: string
     heroSubtitle: string
@@ -117,6 +138,7 @@ export const translations: Record<Language, Translation> = {
     nav: {
       home: 'الرئيسية',
       about: 'من نحن',
+      products: 'منتجاتنا',
       services: 'خدماتنا',
       contact: 'تواصل معنا',
       langToggle: 'EN',
@@ -245,6 +267,45 @@ export const translations: Record<Language, Translation> = {
       heroTitle: 'خدماتنا',
       heroSubtitle: 'حلول تقنية متكاملة لكل احتياجاتك',
     },
+    productsPage: {
+      heroTitle: 'منتجاتنا',
+      heroSubtitle: 'مشاريع وحلول أنجزناها لعملائنا وشركائنا',
+      features: 'أبرز المزايا',
+      techStack: 'التقنيات المستخدمة',
+      viewProject: 'عرض المشروع',
+      products: {
+        mpms: {
+          title: 'منارة',
+          subtitle: 'نظام إدارة العمليات والخدمات اللوجستية لميناء المكلا',
+          description:
+            'نظام مؤسسي متكامل قائم على الأدوار لإدارة عمليات الميناء والخدمات اللوجستية، صُمم لميناء المكلا في اليمن. يجمع النظام واجهة React 18 / Vite / TypeScript حديثة مع واجهة برمجية عالية الأداء Laravel 12، مع تحديثات فورية ودعم كامل للغتين العربية والإنجليزية ووحدات متخصصة لكل دور من أدوار تشغيل الميناء.',
+          features: [
+            'لوحات تحكم مخصصة لخمسة أدوار: وكيل الشحن، ضابط الميناء، مدير الرصيف، التاجر، والإدارة التنفيذية',
+            'إدارة وصول السفن ورسوّها وتصاريحها مع سجلات العمليات',
+            'رفع بيانات الحمولة (XML/JSON) وتتبع إجراءات التخليص',
+            'مراقبة سعات التخزين وتوزيع الحاويات في المخازن والساحات',
+            'إشعارات فورية عبر WebSockets (Laravel Reverb)',
+            'دعم كامل للعربية (RTL) والإنجليزية مع التوقيع الإلكتروني',
+          ],
+          tech: ['React 18', 'Vite', 'TypeScript', 'Laravel 12', 'Tailwind CSS', 'MySQL / SQLite', 'WebSockets'],
+          status: 'مُسلَّم',
+          link: 'https://github.com/mo3stx8/MPMS',
+        },
+        yard: {
+          title: 'YARD',
+          subtitle: 'صيانة تقنية شاملة للأنظمة والشبكات',
+          description:
+            'أنجزنا لمنظمة YARD عملية صيانة شاملة للجانب التقني للشركة، شملت أنظمتها وبنيتها التحتية للشبكات، لضمان استقرار وكفاءة وأمان العمليات التقنية اليومية.',
+          features: [
+            'صيانة شاملة للأنظمة التقنية للشركة',
+            'صيانة وتحسين البنية التحتية للشبكات',
+            'ضمان استقرار وكفاءة العمليات اليومية',
+          ],
+          tech: ['System Administration', 'Network Infrastructure'],
+          status: 'مكتمل',
+        },
+      },
+    },
     contactPage: {
       heroTitle: 'تواصل معنا',
       heroSubtitle: 'نحن هنا لمساعدتك في مشروعك القادم',
@@ -284,6 +345,7 @@ export const translations: Record<Language, Translation> = {
     nav: {
       home: 'Home',
       about: 'About',
+      products: 'Products',
       services: 'Services',
       contact: 'Contact',
       langToggle: 'ع',
@@ -412,6 +474,45 @@ export const translations: Record<Language, Translation> = {
       heroTitle: 'Our Services',
       heroSubtitle: 'Integrated tech solutions for all your needs',
     },
+    productsPage: {
+      heroTitle: 'Our Products',
+      heroSubtitle: 'Projects and solutions we have delivered for our clients and partners',
+      features: 'Key Features',
+      techStack: 'Technologies Used',
+      viewProject: 'View Project',
+      products: {
+        mpms: {
+          title: 'Manarah',
+          subtitle: 'Port Operations & Logistics Management System for the Port of Mukalla',
+          description:
+            'An enterprise-grade, role-based Port Operations and Logistics Management System built for the Port of Mukalla, Yemen. It combines a high-performance Laravel 12 REST API with a modern React 18 / Vite / TypeScript frontend, offering real-time updates, dual-language support, and specialized modules for every port operation role.',
+          features: [
+            'Role-based dashboards for five port roles: Shipping Agent, Port Officer, Wharf Manager, Trader, and Executive',
+            'Vessel arrival, berthing and clearance management with operational event logs',
+            'Cargo manifest upload (XML/JSON) with clearance progress tracking',
+            'Wharf storage capacity and container distribution tracking',
+            'Real-time notifications via WebSockets (Laravel Reverb)',
+            'Full Arabic (RTL) / English support with digital signature capture',
+          ],
+          tech: ['React 18', 'Vite', 'TypeScript', 'Laravel 12', 'Tailwind CSS', 'MySQL / SQLite', 'WebSockets'],
+          status: 'Delivered',
+          link: 'https://github.com/mo3stx8/MPMS',
+        },
+        yard: {
+          title: 'YARD',
+          subtitle: 'Full IT Maintenance for Systems & Network',
+          description:
+            'A completed maintenance engagement for YARD Organization, covering their technical side — systems and network infrastructure — to keep operations stable, secure, and efficient.',
+          features: [
+            'Comprehensive maintenance of the organization systems',
+            'Network infrastructure maintenance and optimization',
+            'Ensuring the stability and efficiency of daily operations',
+          ],
+          tech: ['System Administration', 'Network Infrastructure'],
+          status: 'Completed',
+        },
+      },
+    },
     contactPage: {
       heroTitle: 'Contact Us',
       heroSubtitle: 'We are here to help with your next project',
@@ -489,3 +590,5 @@ export const serviceKeys: ServiceKey[] = [
   'support',
   'hardware',
 ]
+
+export const productKeys: ProductKey[] = ['mpms', 'yard']
