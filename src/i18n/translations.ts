@@ -456,9 +456,9 @@ export interface StatData {
 }
 
 export const statsData: StatData[] = [
-  { key: 'projects', value: 150, suffix: '+' },
+  { key: 'projects', value: 80, suffix: '+' },
   { key: 'clients', value: 80, suffix: '+' },
-  { key: 'years', value: 10, suffix: '+' },
+  { key: 'years', value: 7, suffix: '+' },
   { key: 'experts', value: 25, suffix: '+' },
 ]
 

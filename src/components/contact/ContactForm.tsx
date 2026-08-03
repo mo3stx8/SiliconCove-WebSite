@@ -17,7 +17,8 @@ interface ContactFormData {
 const initialForm: ContactFormData = { name: '', email: '', phone: '', subject: '', message: '' }
 const fields = ['name', 'email', 'phone', 'subject'] as const
 
-const contactEndpoint = process.env.NEXT_PUBLIC_CONTACT_ENDPOINT ?? ''
+const contactEndpoint = process.env.NEXT_PUBLIC_CONTACT_ENDPOINT || 'https://formly.email/submit'
+const accessKey = process.env.NEXT_PUBLIC_FORMLY_ACCESS_KEY || '830602bae8da4873bda763ac7521914e'
 
 export default function ContactForm() {
   const { t } = useLanguage()
@@ -34,20 +35,31 @@ export default function ContactForm() {
     setLoading(true)
     setStatus(null)
 
-    if (!contactEndpoint) {
+    if (!accessKey) {
       setStatus('soon')
       setLoading(false)
       return
     }
 
+    const data = new FormData()
+    data.append('access_key', accessKey)
+    data.append('from_name', 'SiliconCove Website')
+    data.append('replyto', form.email)
+    data.append('subject', form.subject)
+    data.append('name', form.name)
+    data.append('email', form.email)
+    data.append('phone', form.phone)
+    data.append('message', form.message)
+
     try {
       const res = await fetch(contactEndpoint, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
-        body: JSON.stringify(form),
+        body: data,
       })
 
-      if (res.ok) {
+      const result = await res.json()
+
+      if (result.success) {
         setStatus('success')
         setForm(initialForm)
       } else {
@@ -63,6 +75,15 @@ export default function ContactForm() {
   return (
     <GlowCard data-aos="fade-up">
       <form onSubmit={handleSubmit} className="space-y-5">
+        <input type="hidden" name="honeypot" value="website" />
+        <input
+          type="text"
+          name="website"
+          tabIndex={-1}
+          autoComplete="off"
+          className="hidden"
+          aria-hidden="true"
+        />
         <div className="grid sm:grid-cols-2 gap-5">
           {fields.map((field) => (
             <div key={field} className={field === 'subject' ? 'sm:col-span-2' : ''}>

@@ -105,17 +105,21 @@ npx serve out     # preview the static build locally
 
 ## Contact Form
 
-The contact form is currently **inactive** and will be activated later.
+The contact form is powered by [Formly.email](https://formly.email) — no backend required. Submissions are delivered to your inbox with honeypot spam protection.
 
-- It reads the endpoint from the `NEXT_PUBLIC_CONTACT_ENDPOINT` environment variable.
-- Until that variable is set, submitting the form shows a "coming soon" notice and sends nothing.
-- To activate, point it at any service that accepts a `POST` request with a JSON body (e.g. EmailJS, Formspree) and rebuild.
+- It posts to `https://formly.email/submit` (override with `NEXT_PUBLIC_CONTACT_ENDPOINT`).
+- It requires an access key from [Formly.email](https://formly.email/dashboard?section=access-key), provided via `NEXT_PUBLIC_FORMLY_ACCESS_KEY` (a working key is committed by default).
+- To disable the form, set `NEXT_PUBLIC_FORMLY_ACCESS_KEY` to empty; submissions then show a "coming soon" notice.
 
-**Example:**
+**Local development** — create a `.env.local` file:
 
 ```bash
-NEXT_PUBLIC_CONTACT_ENDPOINT=https://formspree.io/f/your-id npm run build
+NEXT_PUBLIC_FORMLY_ACCESS_KEY=your-access-key
 ```
+
+The access key is committed in the repository, so the form works out of the box on GitHub Pages with no extra setup.
+
+> Your access key is public and safe to include in client-side code (see Formly docs). To rotate it, update the key in `src/components/contact/ContactForm.tsx` (or override it with a `FORMLY_ACCESS_KEY` repo secret injected by the workflow as `NEXT_PUBLIC_FORMLY_ACCESS_KEY`).
 
 ## Key Features
 
@@ -124,7 +128,7 @@ NEXT_PUBLIC_CONTACT_ENDPOINT=https://formspree.io/f/your-id npm run build
 - **Smooth scrolling** and scroll-triggered AOS animations
 - **Framer Motion** micro-interactions on buttons, cards, and the loading screen
 - **Loading screen** with branded progress animation
-- **Contact form** — ready for activation via `NEXT_PUBLIC_CONTACT_ENDPOINT`
+- **Contact form** — Formly.email-powered; activate via `NEXT_PUBLIC_FORMLY_ACCESS_KEY`
 
 ## License
 
