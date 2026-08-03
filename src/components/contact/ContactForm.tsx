@@ -55,15 +55,20 @@ export default function ContactForm() {
       const res = await fetch(contactEndpoint, {
         method: 'POST',
         body: data,
+        redirect: 'manual',
       })
 
-      const result = await res.json()
-
-      if (result.success) {
+      if (res.type === 'opaqueredirect' || res.ok || (res.status >= 300 && res.status < 400)) {
         setStatus('success')
         setForm(initialForm)
       } else {
-        setStatus('error')
+        const result = await res.json().catch(() => null)
+        if (result?.success) {
+          setStatus('success')
+          setForm(initialForm)
+        } else {
+          setStatus('error')
+        }
       }
     } catch {
       setStatus('error')
@@ -75,15 +80,6 @@ export default function ContactForm() {
   return (
     <GlowCard data-aos="fade-up">
       <form onSubmit={handleSubmit} className="space-y-5">
-        <input type="hidden" name="honeypot" value="website" />
-        <input
-          type="text"
-          name="website"
-          tabIndex={-1}
-          autoComplete="off"
-          className="hidden"
-          aria-hidden="true"
-        />
         <div className="grid sm:grid-cols-2 gap-5">
           {fields.map((field) => (
             <div key={field} className={field === 'subject' ? 'sm:col-span-2' : ''}>

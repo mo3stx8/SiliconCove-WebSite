@@ -105,7 +105,7 @@ npx serve out     # preview the static build locally
 
 ## Contact Form
 
-The contact form is powered by [Formly.email](https://formly.email) — no backend required. Submissions are delivered to your inbox with honeypot spam protection.
+The contact form is powered by [Formly.email](https://formly.email) — no backend required. Submissions are delivered straight to your inbox.
 
 - It posts to `https://formly.email/submit` (override with `NEXT_PUBLIC_CONTACT_ENDPOINT`).
 - It requires an access key from [Formly.email](https://formly.email/dashboard?section=access-key), provided via `NEXT_PUBLIC_FORMLY_ACCESS_KEY` (a working key is committed by default).
