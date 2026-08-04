@@ -148,7 +148,7 @@ export const translations: Record<Language, Translation> = {
       title: 'نبني المستقبل الرقمي',
       titleHighlight: 'بحلول مبتكرة',
       subtitle:
-        'سيليكون كوف شركة تقنية متخصصة في تطوير البرمجيات والحلول الرقمية المتكاملة للقطاعين الحكومي والخاص والأفراد.',
+        'سيليكون كوف منشأة تقنية متخصصة في تطوير البرمجيات والحلول الرقمية المتكاملة للقطاعين الحكومي والخاص والأفراد.',
       ctaPrimary: 'ابدأ مشروعك',
       ctaSecondary: 'استكشف خدماتنا',
     },
@@ -331,7 +331,7 @@ export const translations: Record<Language, Translation> = {
     },
     footer: {
       description:
-        'شركة تقنية متخصصة في تطوير البرمجيات والحلول الرقمية المتكاملة.',
+        'منشأة تقنية متخصصة في تطوير البرمجيات والحلول الرقمية المتكاملة.',
       quickLinks: 'روابط سريعة',
       services: 'خدماتنا',
       contact: 'تواصل',
@@ -355,7 +355,7 @@ export const translations: Record<Language, Translation> = {
       title: 'Building the Digital Future',
       titleHighlight: 'With Innovation',
       subtitle:
-        'SiliconCove is a tech company specializing in software development and integrated digital solutions for government, private sector, and individuals.',
+        'SiliconCove is a tech entity specializing in software development and integrated digital solutions for government, private sector, and individuals.',
       ctaPrimary: 'Start Your Project',
       ctaSecondary: 'Explore Services',
     },
@@ -538,7 +538,7 @@ export const translations: Record<Language, Translation> = {
     },
     footer: {
       description:
-        'A tech company specializing in software development and integrated digital solutions.',
+        'A tech entity specializing in software development and integrated digital solutions.',
       quickLinks: 'Quick Links',
       services: 'Services',
       contact: 'Contact',
@@ -559,8 +559,8 @@ export interface StatData {
 export const statsData: StatData[] = [
   { key: 'projects', value: 80, suffix: '+' },
   { key: 'clients', value: 80, suffix: '+' },
-  { key: 'years', value: 7, suffix: '+' },
-  { key: 'experts', value: 25, suffix: '+' },
+  { key: 'years', value: 3, suffix: '+' },
+  { key: 'experts', value: 20, suffix: '+' },
 ]
 
 export interface TechStackItem {
