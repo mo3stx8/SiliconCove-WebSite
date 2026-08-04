@@ -1,11 +1,13 @@
 'use client'
 
 import Link from 'next/link'
+import Image from 'next/image'
 import { ArrowLeft, ArrowRight, CheckCircle } from 'lucide-react'
 import { useLanguage } from '@/context/LanguageContext'
 import SectionTitle from '@/components/common/SectionTitle'
 import GlowCard from '@/components/common/GlowCard'
 import Button from '@/components/common/Button'
+import logo from '../../assets/logo.png'
 
 export default function AboutPreview() {
   const { t, isRTL } = useLanguage()
@@ -38,9 +40,13 @@ export default function AboutPreview() {
 
           <GlowCard data-aos="fade-up" data-aos-delay="200" className="aspect-square lg:aspect-auto lg:min-h-[400px] flex items-center justify-center">
             <div className="text-center">
-              <div className="w-24 h-24 rounded-3xl bg-gradient-to-br from-cove-400 to-blue-500 flex items-center justify-center mx-auto mb-6 animate-float shadow-2xl shadow-cove-500/30">
-                <span className="text-4xl font-bold text-white">SC</span>
-              </div>
+              <Image
+                src={logo}
+                alt="SiliconCove"
+                width={224}
+                height={266}
+                className="h-24 w-auto mx-auto mb-6 animate-float drop-shadow-2xl drop-shadow-cove-500/30"
+              />
               <h3 className="text-2xl font-bold text-white mb-2">SiliconCove</h3>
               <p className="text-cove-400 text-sm">Digital Solutions Partner</p>
             </div>

@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
+import Image from 'next/image'
+import logo from '../../assets/logo.png'
 import { useLanguage } from '@/context/LanguageContext'
 
 export default function LoadingScreen({ onComplete }: { onComplete: () => void }) {
@@ -37,10 +39,15 @@ export default function LoadingScreen({ onComplete }: { onComplete: () => void }
             className="text-center"
           >
             <div className="relative mb-8">
-              <div className="w-20 h-20 rounded-2xl bg-gradient-to-br from-cove-400 to-blue-500 flex items-center justify-center mx-auto shadow-2xl shadow-cove-500/30">
-                <span className="text-3xl font-bold text-white">SC</span>
-              </div>
-              <div className="absolute inset-0 w-20 h-20 mx-auto rounded-2xl bg-cove-400/20 animate-ping" />
+              <Image
+                src={logo}
+                alt="SiliconCove"
+                width={224}
+                height={266}
+                className="h-20 w-auto mx-auto"
+                priority
+              />
+              <div className="absolute inset-0 m-auto w-20 h-20 rounded-2xl bg-cove-400/20 animate-ping" />
             </div>
 
             <h1 className="text-2xl md:text-3xl font-bold gradient-text mb-2">SiliconCove</h1>

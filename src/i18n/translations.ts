@@ -288,7 +288,7 @@ export const translations: Record<Language, Translation> = {
             'دعم كامل للعربية (RTL) والإنجليزية مع التوقيع الإلكتروني',
           ],
           tech: ['React 18', 'Vite', 'TypeScript', 'Laravel 12', 'Tailwind CSS', 'MySQL / SQLite', 'WebSockets'],
-          status: 'مُسلَّم',
+          status: 'في تَقَدم',
           link: 'https://github.com/mo3stx8/MPMS',
         },
         yard: {
@@ -495,7 +495,7 @@ export const translations: Record<Language, Translation> = {
             'Full Arabic (RTL) / English support with digital signature capture',
           ],
           tech: ['React 18', 'Vite', 'TypeScript', 'Laravel 12', 'Tailwind CSS', 'MySQL / SQLite', 'WebSockets'],
-          status: 'Delivered',
+          status: 'In Progress',
           link: 'https://github.com/mo3stx8/MPMS',
         },
         yard: {
@@ -573,11 +573,14 @@ export const techStackItems: TechStackItem[] = [
   { name: 'Next.js', category: 'frontend' },
   { name: 'TypeScript', category: 'frontend' },
   { name: 'Node.js', category: 'backend' },
-  { name: 'Python', category: 'backend' },
+  { name: 'Laravel', category: 'backend' },
+  { name: 'PHP', category: 'backend' },
   { name: 'AWS', category: 'cloud' },
   { name: 'Docker', category: 'devops' },
   { name: 'Flutter', category: 'mobile' },
-  { name: 'PostgreSQL', category: 'database' },
+  { name: 'Dart', category: 'mobile' },
+  { name: 'MYSQL', category: 'database' },
+  { name: 'SQL Server', category: 'database' },
 ]
 
 export const serviceKeys: ServiceKey[] = [
