@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+@theme {
+  --color-cove-50: #ecfeff;
+  --color-cove-100: #cffafe;
+  --color-cove-200: #a5f3fc;
+  --color-cove-300: #67e8f9;
+  --color-cove-400: #22d3ee;
+  --color-cove-500: #06b6d4;
+  --color-cove-600: #0891b2;
+  --color-cove-700: #0e7490;
+  --color-cove-800: #155e75;
+  --color-cove-900: #164e63;
+  --color-surface-900: #0a0f1a;
+  --color-surface-800: #111827;
+  --color-surface-700: #1f2937;
+  --font-sans-ar: "IBM Plex Sans Arabic", sans-serif;
+  --font-sans-en: "Inter", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply bg-surface-900 text-slate-100 antialiased overflow-x-hidden;
+}
+
+html[lang="ar"] body {
+  font-family: var(--font-sans-ar);
+}
+
+html[lang="en"] body {
+  font-family: var(--font-sans-en);
+}
+
+::selection {
+  @apply bg-cove-500/30 text-white;
+}
+
+.glow-border {
+  background: linear-gradient(135deg, rgba(6, 182, 212, 0.15), rgba(59, 130, 246, 0.08));
+  border: 1px solid rgba(6, 182, 212, 0.2);
+}
+
+.gradient-text {
+  @apply bg-gradient-to-r from-cove-300 via-cove-400 to-blue-400 bg-clip-text text-transparent;
+}
+
+.hero-grid {
+  background-image:
+    linear-gradient(rgba(6, 182, 212, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(6, 182, 212, 0.03) 1px, transparent 1px);
+  background-size: 60px 60px;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
