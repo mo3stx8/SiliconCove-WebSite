@@ -13,7 +13,6 @@ export default function Hero() {
   return (
     <section className="relative min-h-screen flex items-center hero-grid overflow-hidden">
       <div className="absolute top-1/4 start-1/4 w-96 h-96 bg-cove-500/10 rounded-full blur-3xl" />
-      <div className="absolute bottom-1/4 end-1/4 w-80 h-80 bg-blue-500/10 rounded-full blur-3xl" />
 
       <div className="container mx-auto px-4 md:px-6 lg:px-8 pt-24 pb-16 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
