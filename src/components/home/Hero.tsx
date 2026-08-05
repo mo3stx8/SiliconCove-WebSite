@@ -14,7 +14,7 @@ export default function Hero() {
     <section className="relative min-h-screen flex items-center hero-grid overflow-hidden">
       <div className="absolute top-1/4 start-1/4 w-96 h-96 bg-cove-500/10 rounded-full blur-3xl" />
 
-      <div className="container mx-auto px-4 md:px-6 lg:px-8 pt-24 pb-16 relative z-10">
+      <div className="container mx-auto px-4 md:px-6 lg:px-8 pt-24 pb-12 relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -41,7 +41,7 @@ export default function Hero() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="text-slate-400 text-base md:text-lg lg:text-xl max-w-2xl mx-auto mb-10 leading-relaxed"
+            className="text-slate-400 text-base md:text-lg lg:text-xl max-w-2xl mx-auto mb-8 leading-relaxed"
           >
             {t.hero.subtitle}
           </motion.p>
@@ -60,23 +60,23 @@ export default function Hero() {
               {t.hero.ctaSecondary}
             </Button>
           </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.8, duration: 1 }}
+            className="mt-10 flex justify-center"
+          >
+            <div className="w-6 h-10 rounded-full border-2 border-cove-500/30 flex items-start justify-center p-1.5">
+              <motion.div
+                animate={{ y: [0, 12, 0] }}
+                transition={{ repeat: Infinity, duration: 1.5 }}
+                className="w-1.5 h-1.5 rounded-full bg-cove-400"
+              />
+            </div>
+          </motion.div>
         </div>
       </div>
-
-      <motion.div
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 0.8, duration: 1 }}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2"
-      >
-        <div className="w-6 h-10 rounded-full border-2 border-cove-500/30 flex items-start justify-center p-1.5">
-          <motion.div
-            animate={{ y: [0, 12, 0] }}
-            transition={{ repeat: Infinity, duration: 1.5 }}
-            className="w-1.5 h-1.5 rounded-full bg-cove-400"
-          />
-        </div>
-      </motion.div>
     </section>
   )
 }
