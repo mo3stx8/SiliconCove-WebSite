@@ -556,6 +556,7 @@ export interface StatData {
   suffix: string
 }
 
+
 export const statsData: StatData[] = [
   { key: 'projects', value: 80, suffix: '+' },
   { key: 'clients', value: 80, suffix: '+' },
