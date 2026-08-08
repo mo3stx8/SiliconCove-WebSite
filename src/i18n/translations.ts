@@ -15,7 +15,7 @@ export interface Service {
   description: string
 }
 
-export type ProductKey = 'mpms' | 'yard'
+export type ProductKey = 'mpms'
 
 export interface Product {
   title: string
@@ -27,11 +27,23 @@ export interface Product {
   link?: string
 }
 
+export type ProjectKey = 'yard' | 'agf' | 'aacl' | 'latech' | 'appointment'
+
+export interface Project {
+  title: string
+  subtitle: string
+  description: string
+  features: string[]
+  tech: string[]
+  status: string
+}
+
 export interface Translation {
   nav: {
     home: string
     about: string
     products: string
+    projects: string
     services: string
     contact: string
     langToggle: string
@@ -98,6 +110,13 @@ export interface Translation {
     viewProject: string
     products: Record<ProductKey, Product>
   }
+  projectsPage: {
+    heroTitle: string
+    heroSubtitle: string
+    features: string
+    techStack: string
+    projects: Record<ProjectKey, Project>
+  }
   contactPage: {
     heroTitle: string
     heroSubtitle: string
@@ -139,6 +158,7 @@ export const translations: Record<Language, Translation> = {
       home: 'الرئيسية',
       about: 'من نحن',
       products: 'منتجاتنا',
+      projects: 'مشاريعنا',
       services: 'خدماتنا',
       contact: 'تواصل معنا',
       langToggle: 'EN',
@@ -269,7 +289,7 @@ export const translations: Record<Language, Translation> = {
     },
     productsPage: {
       heroTitle: 'منتجاتنا',
-      heroSubtitle: 'مشاريع وحلول أنجزناها لعملائنا وشركائنا',
+      heroSubtitle: 'منتجات وأنظمة نقدمها لعملائنا وشركائنا',
       features: 'أبرز المزايا',
       techStack: 'التقنيات المستخدمة',
       viewProject: 'عرض المشروع',
@@ -291,6 +311,14 @@ export const translations: Record<Language, Translation> = {
           status: 'في تَقَدم',
           link: 'https://github.com/mo3stx8/MPMS',
         },
+      },
+    },
+    projectsPage: {
+      heroTitle: 'مشاريعنا',
+      heroSubtitle: 'مشاريع أنجزناها لعملائنا وشركائنا',
+      features: 'تفاصيل المشروع',
+      techStack: 'مجال العمل',
+      projects: {
         yard: {
           title: 'YARD',
           subtitle: 'صيانة تقنية شاملة للأنظمة والشبكات',
@@ -301,7 +329,61 @@ export const translations: Record<Language, Translation> = {
             'صيانة وتحسين البنية التحتية للشبكات',
             'ضمان استقرار وكفاءة العمليات اليومية',
           ],
-          tech: ['System Administration', 'Network Infrastructure'],
+          tech: ['إدارة الأنظمة', 'البنية التحتية للشبكات'],
+          status: 'مكتمل',
+        },
+        agf: {
+          title: 'AGF',
+          subtitle: 'صيانة أجهزة مؤسسة البنات الشاملة في اليمن',
+          description:
+            'نفذنا أعمال صيانة شاملة لأجهزة مؤسسة البنات الشاملة (All Girls Foundation) في اليمن، شملت الأجهزة التقنية والمعدات لضمان كفاءتها واستمرارية عملها اليومي.',
+          features: [
+            'صيانة شاملة للأجهزة التقنية والمعدات',
+            'فحص وتشخيص الأعطال وإصلاحها',
+            'ضمان استمرارية تشغيل الأجهزة',
+          ],
+          tech: ['صيانة الأجهزة', 'إدارة الأنظمة'],
+          status: 'مكتمل',
+        },
+        aacl: {
+          title: 'AACL',
+          subtitle: 'صيانة شبكة المنطقة الحرة للتخليص الجمركي والخدمات اللوجستية',
+          description:
+            'نفذنا أعمال صيانة شاملة للشبكة الخاصة بالمنطقة الحرة للتخليص الجمركي والخدمات اللوجستية AACL، شملت البنية التحتية للشبكات وضمان استقرار وسرعة وأمان الاتصال بين الأنظمة.',
+          features: [
+            'صيانة شاملة للبنية التحتية للشبكة',
+            'تحسين أداء وسرعة الاتصال بين الأنظمة',
+            'ضمان أمان واستقرار الشبكة',
+          ],
+          tech: ['البنية التحتية للشبكات', 'إدارة الأنظمة'],
+          status: 'مكتمل',
+        },
+        latech: {
+          title: 'LATECH',
+          subtitle: 'متجر إلكتروني لمتجر تقني محلي',
+          description:
+            'بنينا متجراً إلكترونياً متكاملاً لمتجر LATECH التقني المحلي، يشمل عرض المنتجات وإدارة المخزون وسلة الشراء والطلب، بواجهة عصرية سريعة ومتجاوبة مع جميع الأجهزة.',
+          features: [
+            'عرض المنتجات والتصنيفات والبحث',
+            'سلة شراء وإدارة الطلبات',
+            'لوحة تحكم لإدارة المنتجات والمخزون',
+            'تصميم متجاوب وسريع',
+          ],
+          tech: ['تطوير الويب', 'منصة تجارة إلكترونية'],
+          status: 'مكتمل',
+        },
+        appointment: {
+          title: 'My-Appointment',
+          subtitle: 'موقع إلكتروني لمستشفى لإدارة جميع وظائف المستشفى',
+          description:
+            'بنينا موقعاً إلكترونياً متكاملاً لمستشفى باسم My-Appointment، يتيح تنفيذ جميع وظائف المستشفى إلكترونياً؛ من إدارة المواعيد والسجلات الطبية إلى إدارة المرضى والأقسام والأطباء والعمليات اليومية.',
+          features: [
+            'إدارة المواعيد وحجوزات المرضى',
+            'سجلات طبية إلكترونية للمرضى',
+            'إدارة الأقسام والموظفين والأطباء',
+            'متابعة الحالات والخدمات الطبية',
+          ],
+          tech: ['تطوير الويب', 'نظام إدارة المستشفيات'],
           status: 'مكتمل',
         },
       },
@@ -346,6 +428,7 @@ export const translations: Record<Language, Translation> = {
       home: 'Home',
       about: 'About',
       products: 'Products',
+      projects: 'Projects',
       services: 'Services',
       contact: 'Contact',
       langToggle: 'ع',
@@ -476,7 +559,7 @@ export const translations: Record<Language, Translation> = {
     },
     productsPage: {
       heroTitle: 'Our Products',
-      heroSubtitle: 'Projects and solutions we have delivered for our clients and partners',
+      heroSubtitle: 'Products and systems we build for our clients and partners',
       features: 'Key Features',
       techStack: 'Technologies Used',
       viewProject: 'View Project',
@@ -498,6 +581,14 @@ export const translations: Record<Language, Translation> = {
           status: 'In Progress',
           link: 'https://github.com/mo3stx8/MPMS',
         },
+      },
+    },
+    projectsPage: {
+      heroTitle: 'Our Projects',
+      heroSubtitle: 'Projects we have delivered for our clients and partners',
+      features: 'Project Highlights',
+      techStack: 'Field of Work',
+      projects: {
         yard: {
           title: 'YARD',
           subtitle: 'Full IT Maintenance for Systems & Network',
@@ -509,6 +600,60 @@ export const translations: Record<Language, Translation> = {
             'Ensuring the stability and efficiency of daily operations',
           ],
           tech: ['System Administration', 'Network Infrastructure'],
+          status: 'Completed',
+        },
+        agf: {
+          title: 'AGF',
+          subtitle: 'Equipment Maintenance for All Girls Foundation in Yemen',
+          description:
+            'We performed comprehensive maintenance on the equipment of All Girls Foundation (AGF) in Yemen, covering their technical equipment and devices to ensure efficiency and continuity of daily operations.',
+          features: [
+            'Comprehensive maintenance of technical equipment and devices',
+            'Testing, diagnosing and fixing faults',
+            'Ensuring continuous equipment operation',
+          ],
+          tech: ['Hardware Maintenance', 'System Administration'],
+          status: 'Completed',
+        },
+        aacl: {
+          title: 'AACL',
+          subtitle: 'Network Maintenance for Free Zone for Customs Clearance & Logistics Services',
+          description:
+            'We performed comprehensive maintenance on the network of the Free Zone for Customs Clearance and Logistics Services (AACL), covering the network infrastructure and ensuring stable, fast, and secure connectivity between systems.',
+          features: [
+            'Comprehensive network infrastructure maintenance',
+            'Improved connection performance and speed between systems',
+            'Ensuring network security and stability',
+          ],
+          tech: ['Network Infrastructure', 'System Administration'],
+          status: 'Completed',
+        },
+        latech: {
+          title: 'LATECH',
+          subtitle: 'E-commerce Store for a Local Tech Shop',
+          description:
+            'We built a complete e-commerce store for LATECH, a local tech shop. It includes product listings, inventory management, shopping cart and ordering, with a modern, fast, responsive interface across all devices.',
+          features: [
+            'Product listings, categories and search',
+            'Shopping cart and order management',
+            'Dashboard to manage products and inventory',
+            'Fast, responsive design',
+          ],
+          tech: ['Web Development', 'E-commerce Platform'],
+          status: 'Completed',
+        },
+        appointment: {
+          title: 'My-Appointment',
+          subtitle: 'Hospital Website That Handles All Hospital Functions',
+          description:
+            'We built a comprehensive hospital website called My-Appointment that can perform all hospital functions electronically, from appointment scheduling and electronic medical records to managing patients, departments, doctors, and daily operations.',
+          features: [
+            'Appointment scheduling and patient bookings',
+            'Electronic medical records for patients',
+            'Management of departments, staff and doctors',
+            'Case follow-up and medical services',
+          ],
+          tech: ['Web Development', 'Hospital Management System'],
           status: 'Completed',
         },
       },
@@ -595,4 +740,6 @@ export const serviceKeys: ServiceKey[] = [
   'hardware',
 ]
 
-export const productKeys: ProductKey[] = ['mpms', 'yard']
+export const productKeys: ProductKey[] = ['mpms']
+
+export const projectKeys: ProjectKey[] = ['yard', 'agf', 'aacl', 'latech', 'appointment']

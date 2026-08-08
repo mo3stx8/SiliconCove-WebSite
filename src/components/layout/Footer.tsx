@@ -31,7 +31,7 @@ export default function Footer() {
           <div>
             <h4 className="text-white font-semibold mb-4">{t.footer.quickLinks}</h4>
             <ul className="space-y-2">
-              {(['home', 'about', 'products', 'services', 'contact'] as const).map((key) => (
+              {(['home', 'about', 'products', 'projects', 'services', 'contact'] as const).map((key) => (
                 <li key={key}>
                   <Link
                     href={key === 'home' ? '/' : `/${key}`}

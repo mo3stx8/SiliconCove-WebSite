@@ -14,7 +14,7 @@ interface ProductCardProps {
   link?: string
   featuresLabel: string
   techLabel: string
-  viewProjectLabel: string
+  viewProjectLabel?: string
   delay?: number
 }
 
@@ -70,7 +70,7 @@ export default function ProductCard({
           ))}
         </div>
 
-        {link && (
+        {link && viewProjectLabel && (
           <Link
             href={link}
             target="_blank"
