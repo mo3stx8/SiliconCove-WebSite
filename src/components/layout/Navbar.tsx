@@ -15,6 +15,7 @@ const navLinks = [
   { key: 'home', path: '/' },
   { key: 'about', path: '/about' },
   { key: 'products', path: '/products' },
+  { key: 'projects', path: '/projects' },
   { key: 'services', path: '/services' },
   { key: 'contact', path: '/contact' },
 ] as const satisfies readonly { key: keyof Translation['nav']; path: string }[]
