@@ -74,6 +74,10 @@ export default function Footer() {
                 <Phone size={16} className="text-cove-400 shrink-0" />
                 {t.contactPage.info.phone}
               </li>
+              <li className="flex items-center gap-3 text-slate-400 text-sm">
+                <Phone size={16} className="text-cove-400 shrink-0" />
+               {t.contactPage.info.phone2}
+              </li>
             </ul>
           </div>
         </div>

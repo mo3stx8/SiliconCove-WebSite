@@ -137,6 +137,7 @@ export interface Translation {
       address: string
       email: string
       phone: string
+      phone2?: string
       hours: string
     }
   }
@@ -408,6 +409,7 @@ export const translations: Record<Language, Translation> = {
         address: 'الجمهورية  اليمنية',
         email: 'info@siliconcove.com',
         phone: '+967 775 886 025',
+        phone2:'+966 56 077 9488',
         hours: 'الأحد - الخميس: 9:00 - 18:00',
       },
     },
@@ -678,6 +680,7 @@ export const translations: Record<Language, Translation> = {
         address: 'Republice of Yemen',
         email: 'info@siliconcove.com',
         phone: '+967 775 886 025',
+        phone2:'+966 56 077 9488',
         hours: 'Sun - Thu: 9:00 AM - 6:00 PM',
       },
     },
