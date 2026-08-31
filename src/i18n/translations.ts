@@ -27,7 +27,7 @@ export interface Product {
   link?: string
 }
 
-export type ProjectKey = 'yard' | 'agf' | 'aacl' | 'latech' | 'appointment'
+export type ProjectKey = 'yard' | 'agf' | 'aacl' | 'latech' | 'appointment' | 'coveSchool'
 
 export interface Project {
   title: string
@@ -386,6 +386,20 @@ export const translations: Record<Language, Translation> = {
           tech: ['تطوير الويب', 'نظام إدارة المستشفيات'],
           status: 'مكتمل',
         },
+        coveSchool: {
+          title: 'Cove School',
+          subtitle: 'نظام إدارة مدرسي متكامل SMS',
+          description:
+            'بنينا نظاماً لإدارة المدارس متكاملاً باسم Cove School، يشمل إدارة الطلاب والمعلمين والفصول والجداول والدرجات والحضور والرسوم، ويتيح تنفيذ جميع وظائف المدرسة إلكترونياً من لوحة تحكم واحدة.',
+          features: [
+            'إدارة الطلاب والمعلمين والفصول',
+            'الجدول الدراسي والأقسام',
+            'متابعة الحضور والدرجات والاختبارات',
+            'إدارة الرسوم الدراسية والمدفوعات',
+          ],
+          tech: ['تطوير الويب', 'نظام إدارة المدارس'],
+          status: 'مكتمل',
+        },
       },
     },
     contactPage: {
@@ -656,6 +670,20 @@ export const translations: Record<Language, Translation> = {
           tech: ['Web Development', 'Hospital Management System'],
           status: 'Completed',
         },
+        coveSchool: {
+          title: 'Cove School',
+          subtitle: 'School Management System (SMS)',
+          description:
+            'We built a comprehensive School Management System (SMS) called Cove School. It covers students, teachers, classes, timetables, grades, attendance and fees, letting a school run all its functions electronically from a single dashboard.',
+          features: [
+            'Management of students, teachers and classes',
+            'Timetables and department management',
+            'Attendance, grades and exams tracking',
+            'Tuition fees and payment management',
+          ],
+          tech: ['Web Development', 'School Management System'],
+          status: 'Completed',
+        },
       },
     },
     contactPage: {
@@ -742,4 +770,4 @@ export const serviceKeys: ServiceKey[] = [
 
 export const productKeys: ProductKey[] = ['mpms']
 
-export const projectKeys: ProjectKey[] = ['yard', 'agf', 'aacl', 'latech', 'appointment']
+export const projectKeys: ProjectKey[] = ['yard', 'agf', 'aacl', 'latech', 'appointment', 'coveSchool']
