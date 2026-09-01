@@ -15,7 +15,7 @@ export interface Service {
   description: string
 }
 
-export type ProductKey = 'mpms'
+export type ProductKey = 'mpms' | 'coveSchool' | 'silkERP'
 
 export interface Product {
   title: string
@@ -27,7 +27,7 @@ export interface Product {
   link?: string
 }
 
-export type ProjectKey = 'yard' | 'agf' | 'aacl' | 'latech' | 'appointment' | 'coveSchool'
+export type ProjectKey = 'yard' | 'agf' | 'aacl' | 'latech' | 'appointment'
 
 export interface Project {
   title: string
@@ -137,7 +137,9 @@ export interface Translation {
       address: string
       email: string
       phone: string
+      phoneLabel: string
       phone2?: string
+      phone3?: string
       hours: string
     }
   }
@@ -312,6 +314,39 @@ export const translations: Record<Language, Translation> = {
           status: 'في تَقَدم',
           link: 'https://github.com/mo3stx8/MPMS',
         },
+        coveSchool: {
+          title: 'Cove School',
+          subtitle: 'نظام إدارة مدرسي متكامل SMS مع دعم كامل للعربية والإنجليزية',
+          description:
+            'بنينا نظاماً متكاملاً لإدارة المدارس من SiliconCove-SMS للمدارس الصغيرة والمتوسطة، يرقمنة العمليات الأكاديمية والإدارية والمالية في مكان واحد، مع دعم كامل للغتين العربية والإنجليزية بما في ذلك التخطيط RTL. يشمل أدواراً متعددة من مدير عام وحتى الطالب وولي الأمر، ولكل منها لوحة تحكم وصلاحيات خاصة.',
+          features: [
+            'معالج الإعداد: الملف المدرسي، العام الدراسي، الفصول، والرسوم',
+            'الحضور والاختبارات والدرجات وبطاقات التقارير (PDF)',
+            'الجدول الأسبوعي مع كشف تعارضات',
+            'المالية: أنواع الرسوم والفواتير والمدفوعات والإيصالات',
+            'بوابة للطالب وولي الأمر للدرجات والحضور والرسوم',
+            'سجل تدقيق كامل وتفعيل عبر البريد وصلاحيات قائمة على الأدوار',
+          ],
+          tech: ['React 19', 'TypeScript', 'Vite', 'Laravel 12', 'PostgreSQL', 'Tailwind CSS v4'],
+          status: 'مكتمل',
+          link: 'https://github.com/mo3stx8/Cove-School.git',
+        },
+        silkERP: {
+          title: 'SiliconCove ERP',
+          subtitle: 'نظام ERP متكامل للشركات الصغيرة والمتوسطة',
+          description:
+            'نظام إدارة موارد مؤسسية (ERP) متكامل ومتعدد المستأجرين للشركات الصغيرة والمتوسطة. يربط النظام عملاء الشركة ومبيعاتها ومشترياتها ومخزونها وأموالها وموظفيها ومشاريعها وعملياتها في منصة واحدة. الواجهة الخلفية Laravel 12 مع PostgreSQL والواجهة الأمامية React 19 مع TypeScript و Vite.',
+          features: [
+            'إدارة علاقات العملاء CRM',
+            'المبيعات والمشتريات والمخزون والمحاسبة',
+            'إدارة الموارد البشرية والرواتب',
+            'إدارة المشاريع والمهام والوقت',
+            'فصل كامل بين المستأجرين وحوكمة الأدوار والصلاحيات',
+          ],
+          tech: ['React 19', 'TypeScript', 'Vite', 'Laravel 12', 'PostgreSQL', 'Tailwind CSS', 'Docker'],
+          status: 'قيد التطوير',
+          link: 'https://github.com/mo3stx8/SiliconCove-ERP-SME',
+        },
       },
     },
     projectsPage: {
@@ -387,20 +422,6 @@ export const translations: Record<Language, Translation> = {
           tech: ['تطوير الويب', 'نظام إدارة المستشفيات'],
           status: 'مكتمل',
         },
-        coveSchool: {
-          title: 'Cove School',
-          subtitle: 'نظام إدارة مدرسي متكامل SMS',
-          description:
-            'بنينا نظاماً لإدارة المدارس متكاملاً باسم Cove School، يشمل إدارة الطلاب والمعلمين والفصول والجداول والدرجات والحضور والرسوم، ويتيح تنفيذ جميع وظائف المدرسة إلكترونياً من لوحة تحكم واحدة.',
-          features: [
-            'إدارة الطلاب والمعلمين والفصول',
-            'الجدول الدراسي والأقسام',
-            'متابعة الحضور والدرجات والاختبارات',
-            'إدارة الرسوم الدراسية والمدفوعات',
-          ],
-          tech: ['تطوير الويب', 'نظام إدارة المدارس'],
-          status: 'مكتمل',
-        },
       },
     },
     contactPage: {
@@ -422,8 +443,10 @@ export const translations: Record<Language, Translation> = {
         title: 'معلومات التواصل',
         address: 'الجمهورية  اليمنية',
         email: 'info@siliconcove.com',
+        phoneLabel: 'الهاتف',
         phone: '+967 775 886 025',
         phone2:'+966 56 077 9488',
+        phone3:'+967 774 316 974',
         hours: 'الأحد - الخميس: 9:00 - 18:00',
       },
     },
@@ -597,6 +620,39 @@ export const translations: Record<Language, Translation> = {
           status: 'In Progress',
           link: 'https://github.com/mo3stx8/MPMS',
         },
+        coveSchool: {
+          title: 'Cove School',
+          subtitle: 'Full-stack School Management System (SMS) with Bilingual EN/AR Support',
+          description:
+            'A full-stack School Management System (SiliconCove-SMS) for small-to-medium schools that digitizes core academic, administrative and financial workflows in one place, with full bilingual (English / Arabic) support including RTL layout. It provides role-based dashboards and permission scopes for Super Admin, Admin, Teacher, Accountant, Student and Parent.',
+          features: [
+            'Setup wizard: school profile, academic year, terms, grades and fee types',
+            'Attendance, exams and grading with report cards (PDF)',
+            'Weekly timetable with conflict detection',
+            'Finance: fee types, invoices, payments and receipts',
+            'Student / parent portal for grades, attendance, fees and assignments',
+            'Full audit logging, email activation and role-based permissions',
+          ],
+          tech: ['React 19', 'TypeScript', 'Vite', 'Laravel 12', 'PostgreSQL', 'Tailwind CSS v4'],
+          status: 'Completed',
+          link: 'https://github.com/mo3stx8/Cove-School.git',
+        },
+        silkERP: {
+          title: 'SiliconCove ERP',
+          subtitle: 'Integrated ERP System for Small & Medium Enterprises',
+          description:
+            'A modular, multi-tenant SME ERP system that connects the company customers, sales, purchases, inventory, money, employees, projects, and operations in one platform. The backend is Laravel 12 with PostgreSQL and the frontend is React 19 with TypeScript and Vite.',
+          features: [
+            'CRM — leads, customers, contacts and timeline',
+            'Sales, purchasing, inventory and accounting',
+            'HR — employees, attendance, leave and payroll',
+            'Projects, tasks, timesheets and budgets',
+            'Full tenant isolation with role-based access control',
+          ],
+          tech: ['React 19', 'TypeScript', 'Vite', 'Laravel 12', 'PostgreSQL', 'Tailwind CSS', 'Docker'],
+          status: 'In Development',
+          link: 'https://github.com/mo3stx8/SiliconCove-ERP-SME',
+        },
       },
     },
     projectsPage: {
@@ -672,20 +728,6 @@ export const translations: Record<Language, Translation> = {
           tech: ['Web Development', 'Hospital Management System'],
           status: 'Completed',
         },
-        coveSchool: {
-          title: 'Cove School',
-          subtitle: 'School Management System (SMS)',
-          description:
-            'We built a comprehensive School Management System (SMS) called Cove School. It covers students, teachers, classes, timetables, grades, attendance and fees, letting a school run all its functions electronically from a single dashboard.',
-          features: [
-            'Management of students, teachers and classes',
-            'Timetables and department management',
-            'Attendance, grades and exams tracking',
-            'Tuition fees and payment management',
-          ],
-          tech: ['Web Development', 'School Management System'],
-          status: 'Completed',
-        },
       },
     },
     contactPage: {
@@ -705,10 +747,12 @@ export const translations: Record<Language, Translation> = {
       },
       info: {
         title: 'Contact Information',
-        address: 'Republice of Yemen',
+        address: 'Republic of Yemen',
         email: 'info@siliconcove.com',
+        phoneLabel: 'Phone',
         phone: '+967 775 886 025',
         phone2:'+966 56 077 9488',
+        phone3:'+967 774 316 974',
         hours: 'Sun - Thu: 9:00 AM - 6:00 PM',
       },
     },
@@ -771,6 +815,6 @@ export const serviceKeys: ServiceKey[] = [
   'hardware',
 ]
 
-export const productKeys: ProductKey[] = ['mpms']
+export const productKeys: ProductKey[] = ['mpms', 'coveSchool', 'silkERP']
 
-export const projectKeys: ProjectKey[] = ['yard', 'agf', 'aacl', 'latech', 'appointment', 'coveSchool']
+export const projectKeys: ProjectKey[] = ['yard', 'agf', 'aacl', 'latech', 'appointment']

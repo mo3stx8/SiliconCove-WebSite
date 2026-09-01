@@ -4,12 +4,16 @@ import { Clock, Mail, MapPin, Phone, type LucideIcon } from 'lucide-react'
 import { useLanguage } from '@/context/LanguageContext'
 import GlowCard from '@/components/common/GlowCard'
 
-const infoIcons: Record<string, LucideIcon> = { address: MapPin, email: Mail, phone: Phone, phone2: Phone, hours: Clock }
-const infoKeys = ['address', 'email', 'phone', 'phone2', 'hours'] as const
+const infoIcons: Record<string, LucideIcon> = { address: MapPin, email: Mail, phone: Phone, phone2: Phone, phone3: Phone, hours: Clock }
+const infoKeys = ['address', 'email', 'phone', 'phone2', 'phone3', 'hours'] as const
 
 export default function ContactInfo() {
   const { t } = useLanguage()
-  
+
+  const label = (key: string) => {
+    if (key === 'phone' || key === 'phone2' || key === 'phone3') return t.contactPage.info.phoneLabel
+    return key
+  }
 
   return (
     
@@ -23,7 +27,7 @@ export default function ContactInfo() {
               <Icon size={20} className="text-cove-400" />
             </div>
             <div>
-              <p className="text-slate-400 text-sm capitalize mb-0.5">{key}</p>
+              <p className="text-slate-400 text-sm capitalize mb-0.5">{label(key)}</p>
               <p className="text-white font-medium">{t.contactPage.info[key]}</p>
             </div>
           </GlowCard>
