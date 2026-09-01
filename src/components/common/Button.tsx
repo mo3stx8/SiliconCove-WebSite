@@ -1,7 +1,7 @@
 'use client'
 
 import { motion } from 'framer-motion'
-import type { ElementType, ReactNode } from 'react'
+import type { AnchorHTMLAttributes, ButtonHTMLAttributes, ElementType, ReactNode } from 'react'
 
 const variants = {
   primary:
@@ -20,28 +20,27 @@ const sizes = {
 type ButtonVariant = keyof typeof variants
 type ButtonSize = keyof typeof sizes
 
-interface ButtonProps {
+interface ButtonProps extends Omit<ButtonHTMLAttributes<HTMLButtonElement> & AnchorHTMLAttributes<HTMLAnchorElement>, 'children' | 'className'> {
+  as?: ElementType
   children: ReactNode
   variant?: ButtonVariant
   size?: ButtonSize
   className?: string
-  as?: ElementType
-  [key: string]: unknown
 }
 
 export default function Button({
+  as: Component = 'button',
   children,
   variant = 'primary',
   size = 'md',
   className = '',
-  as: Component = 'button',
   ...props
 }: ButtonProps) {
   return (
     <motion.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }} className="inline-block">
       <Component
         className={`inline-flex items-center justify-center gap-2 rounded-xl font-medium transition-all duration-300 cursor-pointer ${variants[variant]} ${sizes[size]} ${className}`}
-        {...(props as Record<string, unknown>)}
+        {...props}
       >
         {children}
       </Component>

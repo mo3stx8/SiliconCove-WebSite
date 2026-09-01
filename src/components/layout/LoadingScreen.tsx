@@ -11,18 +11,26 @@ export default function LoadingScreen({ onComplete }: { onComplete: () => void }
   const [progress, setProgress] = useState(0)
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      setProgress((prev) => {
-        if (prev >= 100) {
-          clearInterval(interval)
-          setTimeout(onComplete, 400)
-          return 100
-        }
-        return prev + 2
-      })
-    }, 30)
+    let raf = 0
+    let done: ReturnType<typeof setTimeout> | undefined
+    const DURATION = 1500
+    const start = performance.now()
 
-    return () => clearInterval(interval)
+    const tick = (now: number) => {
+      const progress = Math.min(100, Math.round(((now - start) / DURATION) * 100))
+      setProgress(progress)
+      if (progress < 100) {
+        raf = requestAnimationFrame(tick)
+      } else {
+        done = setTimeout(onComplete, 400)
+      }
+    }
+
+    raf = requestAnimationFrame(tick)
+    return () => {
+      cancelAnimationFrame(raf)
+      if (done) clearTimeout(done)
+    }
   }, [onComplete])
 
   return (

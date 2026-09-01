@@ -5,6 +5,7 @@ import Image from 'next/image'
 import logo from '../../assets/logo.png'
 import { Mail, MapPin, Phone } from 'lucide-react'
 import { useLanguage } from '@/context/LanguageContext'
+import PhoneNumber from '@/components/common/PhoneNumber'
 
 export default function Footer() {
   const { t } = useLanguage()
@@ -72,15 +73,21 @@ export default function Footer() {
               </li>
               <li className="flex items-center gap-3 text-slate-400 text-sm">
                 <Phone size={16} className="text-cove-400 shrink-0" />
-                {t.contactPage.info.phone}
+                <PhoneNumber value={t.contactPage.info.phone} className="hover:text-cove-400 transition-colors">
+                  {t.contactPage.info.phone}
+                </PhoneNumber>
               </li>
               <li className="flex items-center gap-3 text-slate-400 text-sm">
                 <Phone size={16} className="text-cove-400 shrink-0" />
-               {t.contactPage.info.phone2}
+                <PhoneNumber value={t.contactPage.info.phone2 ?? ''} className="hover:text-cove-400 transition-colors">
+                  {t.contactPage.info.phone2}
+                </PhoneNumber>
               </li>
               <li className="flex items-center gap-3 text-slate-400 text-sm">
                 <Phone size={16} className="text-cove-400 shrink-0" />
-               {t.contactPage.info.phone3}
+                <PhoneNumber value={t.contactPage.info.phone3 ?? ''} className="hover:text-cove-400 transition-colors">
+                  {t.contactPage.info.phone3}
+                </PhoneNumber>
               </li>
             </ul>
           </div>

@@ -20,6 +20,9 @@ const fields = ['name', 'email', 'phone', 'subject'] as const
 const contactEndpoint = process.env.NEXT_PUBLIC_CONTACT_ENDPOINT || 'https://formly.email/submit'
 const accessKey = process.env.NEXT_PUBLIC_FORMLY_ACCESS_KEY || '830602bae8da4873bda763ac7521914e'
 
+const fieldClassName =
+  'w-full px-4 py-3 rounded-xl bg-surface-900/50 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-cove-500/50 focus:ring-1 focus:ring-cove-500/30 transition-colors'
+
 export default function ContactForm() {
   const { t } = useLanguage()
   const [form, setForm] = useState<ContactFormData>(initialForm)
@@ -93,7 +96,7 @@ export default function ContactForm() {
                 value={form[field]}
                 onChange={handleChange}
                 required={field !== 'phone'}
-                className="w-full px-4 py-3 rounded-xl bg-surface-900/50 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-cove-500/50 focus:ring-1 focus:ring-cove-500/30 transition-colors"
+                className={fieldClassName}
               />
             </div>
           ))}
@@ -110,7 +113,7 @@ export default function ContactForm() {
             onChange={handleChange}
             required
             rows={5}
-            className="w-full px-4 py-3 rounded-xl bg-surface-900/50 border border-white/10 text-white placeholder-slate-500 focus:outline-none focus:border-cove-500/50 focus:ring-1 focus:ring-cove-500/30 transition-colors resize-none"
+            className={`${fieldClassName} resize-none`}
           />
         </div>
 
